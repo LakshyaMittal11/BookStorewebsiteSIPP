@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Hand Book Store</title>
+  <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+
+  
+  <header>
+    <h1>Second Hand Book Store</h1>
+    <nav>
+      <a href="index">Front Page</a>
+      <a href="home">Home</a>
+      <a href="about">About</a>
+      <a href="books">Books</a>
+      <a href="contact">Contact Us</a>
+      <a href="Register">Registration</a>
+    </nav>
+  </header>
+
+  <div class="contact-container">
+    <form class="contact-form" action="regprocess" method="post">
+      <h2>Register Here</h2>
+      <label for="email" >Name:</label>
+      <input type="text" name="N" id="email" placeholder="Enter your email" required>
+
+         <label for="email" >Email:</label>
+      <input type="text" name="E" id="email" placeholder="Enter your email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" name="P" id="password" placeholder="Enter your password" required>
+
+      <label for="password">RePassword:</label>
+      <input type="password" name="RP" id="rpassword" placeholder="Enter your Repassword" required>
+
+      <button type="submit" name="S">Submit</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        const password = document.getElementById('password').value;
+        const repassword = document.getElementById('repassword').value;
+        const passwordError = document.getElementById('passwordError');
+
+        if (password !== repassword) {
+            e.preventDefault(); 
+            passwordError.style.display = 'block';
+        } else {
+            passwordError.style.display = 'none';
+        }
+    });
+</script>
+</body>
+</html>
