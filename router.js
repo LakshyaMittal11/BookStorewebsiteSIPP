@@ -34,11 +34,15 @@ app.get("/login",function(req,res)
 {
 res.sendFile("./bookshop/html/login.html",{root:__dirname});
 });
+
     app.get("/Register",function(req,res)
 {
 res.sendFile("./bookshop/html/register.html",{root:__dirname});
 });
-
+app.get("/index",function(req,res)
+{
+res.sendFile("./bookshop/html/index.html",{root:__dirname});
+});
 
 var bd=require('body-parser');
 var ed=bd.urlencoded({extended:false}) 
