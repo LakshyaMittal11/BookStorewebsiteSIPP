@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Hand Book Store</title>
+  <link rel="stylesheet" href="/css/contact.css">
+</head>
+<body>
+
+  
+  <header>
+    <h1>Second Hand Book Store</h1>
+    <nav>
+      <a href="index">Front Page</a>
+      <a href="home">Home</a>
+      <a href="about">About</a>
+      <a href="books">Books</a>
+      <a href="contact">Contact Us</a>
+      <a href="Register">Registration</a>
+    </nav>
+  </header>
+
+  <!-- Contact Form -->
+  <div class="contact-container">
+    <form class="contact-form" action="Contactprocess" method="post">
+      <h2>Contact Us</h2>
+      <p>If you have any questions or would like to know more about our collection, please get in touch with us using the form below.</p>
+      <label for="name" >Name:</label>
+      <input type="text" name="N" id="name" placeholder="Enter your name" required>
+      <label for="email" >Email:</label>
+      <input type="text" name="E" id="email" placeholder="Enter your email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" name="P" id="phone" placeholder="Enter your phone number" required>
+
+      <label for="message">Message:</label>
+      <textarea id="address" type="text" name="M" placeholder="Enter your message" rows="3"></textarea>
+
+      <button type="submit" name="S">Send</button>
+    </form>
+  </div>
+
+</body>
+</html>

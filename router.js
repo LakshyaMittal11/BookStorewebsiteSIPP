@@ -43,6 +43,10 @@ app.get("/index",function(req,res)
 {
 res.sendFile("./bookshop/html/index.html",{root:__dirname});
 });
+app.get("/contact",function(req,res)
+{
+res.sendFile("./bookshop/html/contact.html",{root:__dirname});
+});
 
 var bd=require('body-parser');
 var ed=bd.urlencoded({extended:false}) 
