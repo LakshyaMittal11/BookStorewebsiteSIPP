@@ -1,0 +1,50 @@
+<html>
+    <head>
+<link rel="stylesheet" href="/css/about.css">
+<link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Second Hand Book Store</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index">Front Page</a></li>
+                        <li><a href="home">Home</a></li>
+                        <li><a href="About">About</a></li>
+                        <li><a href="books">Books</a></li>
+                        <li><a href="contact">Contact Us</a></li>
+                        <li><a href="Register">Registration</a></li>
+                        <li><a href="vcart">VCart</a></li>
+
+
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section id="books">
+            <div class="container">
+                <h2>Books Collection</h2>
+                <div class="book-list">
+<% data.forEach((entry)=>
+{                   
+%>
+
+                    <div class="book">
+                        <img src="<%=entry.bimage%>" alt="Book 1 Cover">
+                        <h3><%= entry.bname%></h3>
+                        <p><%=entry.category%></p>
+                        <p>"<%=entry.price%>"</p>
+                        <p>"<%=entry.description%>"</p>
+                        
+                       <p> <a href="AddCart?bid=<%= entry.bookid%>&bn=<%= entry.bname%>&p=<%= entry.price%>&c=<%= entry.category%>&d=<%= entry.description%>&bi=<%= entry.bimage%>"class="book-link"> Add To cart</a></td>
+                    </div>
+<%});
+%>
+                                       
+                </div>
+            </div>
+        </section>
+        
+    </body>
+</html>

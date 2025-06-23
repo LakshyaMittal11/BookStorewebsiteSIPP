@@ -55,6 +55,13 @@ app.get("/about",function(req,res)
 {
 res.sendFile("./bookshop/html/about.html",{root:__dirname});
 });
+app.get("/books",function(req,res)
+{
+var q="select * from book";
+con.query(q,function(err,result){
+    res.render("books",{data:result});
+});
+});
 var bd=require('body-parser');
 var ed=bd.urlencoded({extended:false}) 
 
