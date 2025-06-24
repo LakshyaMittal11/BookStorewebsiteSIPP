@@ -55,6 +55,10 @@ app.get("/about",function(req,res)
 {
 res.sendFile("./bookshop/html/about.html",{root:__dirname});
 });
+app.get("/admin",function(req,res)
+{
+res.sendFile("./bookshop/html/adminlogin.html",{root:__dirname});
+});
 app.get("/books",function(req,res)
 {
 var q="select * from book";
