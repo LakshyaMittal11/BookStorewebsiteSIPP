@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Layout</title>
+    <link rel="stylesheet" href="addbook.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="addbook">Add Book</a></li>
+                    <li><a href="vbooks">View Books</a></li>
+                    <li><a href="vienq">Viewer Inquery</a></li>
+                    <li><a href="viewusers">View Users</a></li>
+                    <li><a href="alogout">Admin Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Book Details</h1>
+        <form action="addbookprocess" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="bookId">Book ID</label>
+                <input type="text" id="bookId" name="bookId" placeholder="Enter Book ID">
+            </div>
+            <div class="form-group">
+                <label for="bookName">Book Name</label>
+                <input type="text" id="bookName" name="bookName" placeholder="Enter Book Name">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" id="price" name="price" placeholder="Enter Price">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category" placeholder="Enter Category">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter Description"></textarea>
+            </div>
+            <div class="form-group image-box">
+                <label for="bookImage">Book Image</label>
+                <div class="image-placeholder">
+                    <input type="file" id="bookImage" name="bookImage" accept="image/*" style="display: none;">
+                    <span onclick="document.getElementById('bookImage').click()">Upload Image</span>
+                </div>
+            </div>
+            <button type="submit" class="save-button">Save</button>
+        </form>
+    </div>
+
+    <script>
+        // Optional: Display the selected image file name
+        document.getElementById('bookImage').addEventListener('change', function(event) {
+            const fileName = event.target.files[0].name;
+            document.querySelector('.image-placeholder span').textContent = fileName;
+        });
+    </script>
+</body>
+</html>
