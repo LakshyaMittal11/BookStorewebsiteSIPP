@@ -76,7 +76,22 @@ app.use(function (req, res, next) {
   next();
 });
 
-
+/*------------------------contact-----------------------*/
+app.post("/Contactprocess",ed,function(req,res)
+{
+    var d=req.body.N;
+    var a=req.body.E;
+    var b=req.body.P;
+    var c=req.body.M;
+    var q="insert into contact values('"+d+"','"+a+"','"+b+"','"+c+"')";
+   con.query(q,function(err,result)
+   {
+    if(err)
+        throw err;
+    res.send("successfully send");
+});
+});
+/*----------------------register------------------*/
 app.post("/regprocess",ed,function(req,res)
 {
     var a=req.body.N;
