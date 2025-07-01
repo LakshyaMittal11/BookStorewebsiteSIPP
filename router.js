@@ -136,7 +136,33 @@ con.query(q,function(err,result){
     res.send("Email is invalid");
 });    
 });
-
+/*------------------------Adminlogin------------------*/
+app.post("/Aloginprocess",ed,function(req,res){
+    var a=req.body.E;
+    var b=req.body.P;
+    console.log(a);
+    console.log(b);
+    var q="select * from admin where email='"+a+"'";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        console.log(result);
+        var L=result.length;
+        if(L>0){
+            var p=result[0].pwd;
+            if(p==b)
+{
+req.session.aname=result[0].name;
+res.render('ahome',{na:result[0].name});
+ 
+}           else
+            res.send("Password is invalid");
+        }
+        else
+        res.send("Email is invalid");
+    });
+        
+    });
 app.listen(4000,function(req,res)
 {
 console.log("Project run on port no 4000");
