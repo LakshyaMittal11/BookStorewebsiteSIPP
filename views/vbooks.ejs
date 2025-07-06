@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="/css/viewusers.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome <%= aname%></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="addbook">Add Book</a></li>
+                    <li><a href="vbooks">View Books</a></li>
+                    <li><a href="vienq">Viewer Inquery</a></li>
+                    <li><a href="viewusers">View Users</a></li>
+                    <li><a href="avorders">View Orders</a></li>
+                    <li><a href="alogout">Admin Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-content">
+           <table border="1">
+<tr>
+<th>Book id</th>
+<th>Book name</th>
+<th>Price</th>
+<th>Category</th>
+<th>Description</th>
+<th>Book Image</th>
+<th>Delete</th>
+
+</tr>
+<% data.forEach((entry)=>
+{
+%>
+<tr>
+    <td><%=entry.bookid%></td>
+<td><%= entry.bname %></td>
+<td><%= entry.price %></td>
+<td><%= entry.category %></td>
+<td><%= entry.description %></td>
+<td><img height="100" width="100" src="<%= entry.bimage %>"></td>
+<td><a href="deletebook?em=<%= entry.bookid%>">Delete</a></td>
+
+</tr>
+<%});
+%>
+</table>
+
+
+        </main>
+
+        <footer class="footer">
+            <p>Books Image Here</p>
+        </footer>
+    </div>
+</body>
+</html>
