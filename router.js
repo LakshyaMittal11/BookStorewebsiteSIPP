@@ -163,6 +163,42 @@ res.render('ahome',{na:result[0].name});
     });
         
     });
+
+    /*----------------------multer code---------------------*/
+    const st = multer.diskStorage({
+        destination: function (req, file, cb) {
+      
+          cb(null, 'bookshop/uploads/');
+        },
+        filename: function (req, file, cb) {
+          
+          cb(null, file.originalname);
+        }
+      });
+      
+      const upload = multer({ storage: st });
+
+      /*----------------------addbooks---------------------*/
+    
+app.post("/addbookprocess",ed, upload.single('bookImage'),function(req,res)
+{
+if(req.session.aname==null)
+res.redirect("/admin");
+else{
+    var a=req.body.bookId;
+    var b=req.body.bookName;
+    var c=req.body.price
+    var d=req.body.category
+    var e=req.body.description;
+    var f=req.file.filename;
+  var q="insert into book values('"+a+"','"+b+"',"+c+",'"+d+"','"+e+"','"+f+"')";
+ con.query(q,function(err,result){
+    if(err)
+        throw err;
+       res.redirect("vbooks");
+});
+}
+});
 app.listen(4000,function(req,res)
 {
 console.log("Project run on port no 4000");
