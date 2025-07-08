@@ -1,10 +1,11 @@
 var express=require('express');
 var app=express();
+const multer=require('multer');
 const session = require("express-session");
 app.use(express.static("bookshop"));
 app.use(express.static("bookshop/css"));
 app.use(express.static("bookshop/html"));
-
+app.use(express.static("bookshop/uploads"));
 app.set('view engine','ejs');
 
 app.use(session({
@@ -65,6 +66,9 @@ var q="select * from book";
 con.query(q,function(err,result){
     res.render("books",{data:result});
 });
+});
+app.get("/addbook",function(req,res){
+    res.sendFile("./bookshop/html/addbook.html",{root:__dirname});
 });
 var bd=require('body-parser');
 var ed=bd.urlencoded({extended:false}) 
@@ -198,6 +202,36 @@ else{
        res.redirect("vbooks");
 });
 }
+});
+
+/*-----------------View book---------------------------------*/
+app.get("/vbooks",function(req,res)
+{
+if(req.session.aname==null)
+res.redirect("/admin");
+else{
+    var q="select * from book";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        res.render('vbooks',{data:result});
+    });
+}
+});
+
+
+
+
+/*---------------delete book for vbooks-------------------------*/
+
+app.get("/deletebook",(req,res)=>{
+    var a=req.query.em;
+    var q="Delete from book where bookid='"+a+"'";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        res.redirect("/vbooks");
+});
 });
 app.listen(4000,function(req,res)
 {
