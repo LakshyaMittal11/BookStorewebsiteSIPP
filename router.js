@@ -70,6 +70,9 @@ con.query(q,function(err,result){
 app.get("/addbook",function(req,res){
     res.sendFile("./bookshop/html/addbook.html",{root:__dirname});
 });
+app.get("/orders",function(req,res){
+    res.render("orders");
+});
 var bd=require('body-parser');
 var ed=bd.urlencoded({extended:false}) 
 
