@@ -222,7 +222,16 @@ else{
 }
 });
 
-
+/*-----------------delete user for viewusers---------------------------------*/
+app.get("/deleteuser",(req,res)=>{
+    var a=req.query.em;
+    var q="Delete from users where email='"+a+"'";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        res.redirect("/viewusers");
+});
+});
 
 
 /*---------------delete book for vbooks-------------------------*/
