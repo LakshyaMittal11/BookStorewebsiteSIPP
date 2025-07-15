@@ -170,7 +170,19 @@ res.render('ahome',{na:result[0].name});
     });
         
     });
-
+/*--------------------view Users--------------------*/
+app.get("/viewusers",function(req,res){
+    if(res.session.aname==null)
+        res.redirect("/admin");
+    else{
+    var q="select * from users";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        res.render('viewusers',{data:result});
+        });
+    }
+});
     /*----------------------multer code---------------------*/
     const st = multer.diskStorage({
         destination: function (req, file, cb) {
