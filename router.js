@@ -172,7 +172,7 @@ res.render('ahome',{na:result[0].name});
     });
 /*--------------------view Users--------------------*/
 app.get("/viewusers",function(req,res){
-    if(res.session.aname==null)
+    if(req.session.aname==null)
         res.redirect("/admin");
     else{
     var q="select * from users";
@@ -257,6 +257,35 @@ app.get("/deletebook",(req,res)=>{
         res.redirect("/vbooks");
 });
 });
+/*----------------------Add to Cart user side----------*/
+
+app.get("/AddCart",function(req,res)
+{
+
+    if(req.session.uname==null)
+        res.redirect("/login");
+    else
+    {
+
+        var ue=req.session.uemail;
+        var un=req.session.uname;
+        var a=req.query.bid;
+        var b=req.query.bn;
+        var c=req.query.p;
+        var d=req.query.c;
+        var e=req.query.d;
+        var f=req.query.bi;
+       var q="insert into cart(uname,uemail,bookid,bname,price,category,description,bimage) values('"+un+"','"+ue+"','"+a+"','"+b+"','"+c+"','"+d+"','"+e+"','"+f+"')";
+       con.query(q,function(err,result)
+       {
+        if(err)
+            throw err;
+        res.redirect("vcart");
+
+       });
+}
+});
+
 app.listen(4000,function(req,res)
 {
 console.log("Project run on port no 4000");
