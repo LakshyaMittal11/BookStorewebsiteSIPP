@@ -286,6 +286,26 @@ app.get("/AddCart",function(req,res)
 }
 });
 
+/*----------------------vcart------------------------*/
+
+app.get("/vcart",function(req,res)
+{
+    
+    if(req.session.uname==null)
+        res.redirect("/login");
+    else
+    {
+    var ue=req.session.uemail;
+    var q="Select * from cart where uemail='"+ue+"'";
+    con.query(q,function(err,result)
+{
+    if(err)
+        throw err;
+    res.render("vcart",{data:result});
+});
+}
+});
+
 app.listen(4000,function(req,res)
 {
 console.log("Project run on port no 4000");
