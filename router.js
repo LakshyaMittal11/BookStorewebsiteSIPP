@@ -305,6 +305,17 @@ app.get("/vcart",function(req,res)
 });
 }
 });
+/*---------------------delete cart from user side-------------------------*/
+app.get("/delcart",function(req,res)
+{
+
+    var a=req.query.sno;
+    var q="delete from cart where sno='"+a+"'";
+    con.query(q,function(err,result){
+        if(err) throw err;
+        res.redirect("/vcart");
+});
+});
 
 app.listen(4000,function(req,res)
 {
