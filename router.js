@@ -183,6 +183,20 @@ app.get("/viewusers",function(req,res){
         });
     }
 });
+/*----------------------viewenquery---------------------*/
+    app.get("/vienq",function(req,res)
+    {
+if(req.session.aname==null)
+res.redirect("/admin");
+else{
+        var q="select * from contact";
+        con.query(q,function(err,result){
+            if(err)
+                throw err;
+            res.render('vienq',{data:result});
+        });
+    }
+    });
     /*----------------------multer code---------------------*/
     const st = multer.diskStorage({
         destination: function (req, file, cb) {
