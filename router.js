@@ -247,7 +247,20 @@ else{
     });
 }
 });
-
+/*-----------------------adminview orders------------------*/
+app.get("/avorders",function(req,res)
+{
+if(req.session.aname==null)
+res.redirect("/admin");
+else{
+    var q="select * from orders";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        res.render('avorders',{data:result});
+    });
+}
+});
 /*-----------------delete user for viewusers---------------------------------*/
 app.get("/deleteuser",(req,res)=>{
     var a=req.query.em;
