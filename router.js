@@ -343,7 +343,19 @@ app.get("/delcart",function(req,res)
         res.redirect("/vcart");
 });
 });
+/*-----------------------order view----------------*/
 
+app.get("/vorders",function(req,res){
+var em=req.session.uemail;
+var q="select * from orders where useremail='"+em+"'";
+con.query(q,function(err,result){
+if(err)
+    throw err;
+res.render("orderview",{data:result});
+
+})
+
+});
 app.listen(4000,function(req,res)
 {
 console.log("Project run on port no 4000");

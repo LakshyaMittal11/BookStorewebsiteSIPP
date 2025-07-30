@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order View</title>
+  <link rel="stylesheet" href="/css/orderview.css">
+</head>
+<body>
+  <div class="container">
+    <div>
+      <h1>Second-Hand Book Store</h1>
+    </div>
+    <div class="order-details">
+      <h2>Order Details</h2>
+      <table border="1">
+        
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Pin</th>
+        <th>Amount</th>
+        <th>Product Name</th>
+        <th>Product Orderdate</th>
+        <th>Delete</th>
+      <% data.forEach((entry)=>
+      {
+      %>
+      <tr>
+          <td><%=entry.PhoneNumber%></td>
+      <td><%= entry.Address %></td>
+      <td><%= entry.Pin %></td>
+      <td><%= entry.Amount %></td>
+      <td><%= entry.pname %></td>
+      <td><%=entry.orderdate %></td>
+      <td><a href="delorder?sno=<%= entry.sno%>">Delete</a></td>
+      </tr>
+      <%});%>
+    </table>
+    </div>
+    <div class="actions">
+      <a href="#">Track Order</a>
+      <a href="#">Return/Exchange</a>
+      <a href="#">Cancel Order</a>
+    </div>
+  </div>
+</body>
+</html>
