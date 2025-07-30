@@ -271,7 +271,16 @@ app.get("/deleteuser",(req,res)=>{
         res.redirect("/viewusers");
 });
 });
-
+/*-----------------delete users for vienq--------------------------*/
+app.get("/deletecontact",(req,res)=>{
+    var a=req.query.em;
+    var q="Delete from contact where email='"+a+"'";
+    con.query(q,function(err,result){
+        if(err)
+            throw err;
+        res.redirect("/vienq");
+});
+});
 
 /*---------------delete book for vbooks-------------------------*/
 
@@ -342,6 +351,57 @@ app.get("/delcart",function(req,res)
         if(err) throw err;
         res.redirect("/vcart");
 });
+});
+/*-----------------delete orders from user side-------------------------*/
+app.get("/delorder",function(req,res)
+{
+
+    var a=req.query.sno;
+    var q="delete from orders where sno='"+a+"'";
+    con.query(q,function(err,result){
+        if(err) throw err;
+        res.redirect("/vorders");
+});
+});
+/*-----------------delete orders from admin side-------------------------*/
+app.get("/delorders",function(req,res)
+{
+
+    var a=req.query.sno;
+    var q="delete from orders where sno='"+a+"'";
+    con.query(q,function(err,result){
+        if(err) throw err;
+        res.redirect("/avorders");
+});
+});
+/*-----------------order now-------------*/
+app.post("/orderprocess",ed,function(req,res)
+{
+var N=req.session.uname;
+var E=req.session.uemail;
+var ph=req.body.phone;
+var add=req.body.address;
+var pin=req.body.pincode;
+var q="select price,bname from cart where uemail='"+E+"'";
+con.query(q,function(err,result)
+{
+var p=0;
+var bn="";
+for(i=0;i<result.length;i++)
+{
+    p=p+Number(result[i].price);
+    bn=bn+","+result[i].bname;
+
+}
+var qt="insert into orders(UserName,UserEmail,PhoneNumber,Address,Pin,Amount,pname) values('"+N+"','"+E+"','"+ph+"','"+add+"','"+pin+"','"+p+"','"+bn+"')";
+con.query(qt,function(error,result2)
+{
+res.redirect("/vorders");
+
+});
+
+});
+
 });
 /*-----------------------order view----------------*/
 
