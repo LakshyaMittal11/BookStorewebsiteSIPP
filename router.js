@@ -416,6 +416,19 @@ res.render("orderview",{data:result});
 })
 
 });
+/*--------------------adminlogout--------------*/
+
+app.get("/alogout",function(req,res){
+    req.session.destroy((err) => {
+        res.redirect('/admin');
+      })
+});
+/*--------------------userlogout--------------*/
+app.get("/ulogout",function(req,res){
+    req.session.destroy((err) => {
+        res.redirect('/login');
+      })
+});
 app.listen(4000,function(req,res)
 {
 console.log("Project run on port no 4000");
